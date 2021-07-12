@@ -20,7 +20,7 @@ def send_welcome(message):
     if str(message.from_user.id) in [admin_id.strip() for admin_id in config['AdminPanel']['ids'].split(',')]:
         bot.send_message(message.from_user.id, """
 Welcome to *Yet Another Telegram Web Ring Bot*!
-Use /admin_help to to get administrative information""", parse_mode='Markdown')
+Use /admin_help to get information about usage.""", parse_mode='Markdown')
 
 
 @bot.message_handler(commands=['add'])
@@ -50,6 +50,17 @@ def channel_add_handler(message):
             bot.send_message(message.from_user.id, 'Channel successfully added.')
     else:
         bot.send_message(message.from_user.id, 'Channel is already in list')
+
+
+@bot.message_handler(commands=['admin_help'])
+def admin_help(message):
+    if str(message.from_user.id) in [admin_id.strip() for admin_id in config['AdminPanel']['ids'].split(',')]:
+        bot.send_message(message.from_user.id, '''/add - adding channel to list.
+    Before adding channel to the list, administrator of the channel has to add bot with permissions to send messages and modify channel info. If bot doesn't has enough permissions - it will return error message in private chat with Ring Master (Web Ring administrator).
+    Due to Telegram restrictions, description of the channel can be up to 256 characters. WebRing uses at least 110-120 characters, so it is the second requirement to add the channel. Bot won't add channel, that doesn't have enough space in the description to create WebRing.
+    IMPORTANT: Telegram has delay in updating info, so you will have to wait about 1-2 minutes, after changing description, to make a try to add channel.
+/remove - removing channel from the list and deleting bot from channel.
+/list - get list of the channels.''')
 
 
 @bot.message_handler(commands=['remove'])
