@@ -12,9 +12,10 @@ Telegram WebRing can be used to make possible for Telegram users surf through ch
 ## Usage
 
 `/add` - adding channel to list. 
-Before adding channel to the list, administrator of the channel has to add bot with permissions to send messages and modify channel info. If bot doesn't has enough permissions - it will return error message in private chat with Ring Master (Web Ring administrator). 
-Due to Telegram restrictions, description of the channel can be up to 256 characters. WebRing uses at least 110-120 characters, so it is the second requirement to add the channel. Bot **won't** add channel, that doesn't have enough space in the description to create WebRing. **IMPORTANT**: Telegram has delay in updating info, so you will have to wait about 1-2 minutes, after changing description, to make a try to add channel.
-`/remove` - removing channel from the list and deleting bot from channel.
+Before adding channel to the list, administrator of the channel has to add bot with permissions to send messages and modify channel info. If bot doesn't has enough permissions - it will return error message in private chat with Ring Master (Web Ring administrator).</br>
+Due to Telegram restrictions, description of the channel can be up to 256 characters. WebRing uses at least 110-120 characters, so it is the second requirement to add the channel. Bot **won't** add channel, that doesn't have enough space in the description to create WebRing.</br>
+**IMPORTANT**: Telegram has delay in updating info, so you will have to wait about 1-2 minutes, after changing description, to make a try to add channel.</br>
+`/remove` - removing channel from the list and deleting bot from channel. </br>
 `/list` - get list of the channels.
 
 ## Installation and configuration
