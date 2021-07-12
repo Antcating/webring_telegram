@@ -8,9 +8,9 @@ Telegram WebRing can be used to make possible for Telegram users surf through ch
     <img src="example.png">
 </p>
 
-—
 ## Usage
 
+- `/admin_help` - to get information, that written here.
 - `/add` - adding channel to list. </br>
 Before adding channel to the list, administrator of the channel has to add bot with permissions to send messages and modify channel info. If bot doesn't has enough permissions - it will return error message in private chat with Ring Master (Web Ring administrator).</br>
 Due to Telegram restrictions, description of the channel can be up to 256 characters. WebRing uses at least 110-120 characters, so it is the second requirement to add the channel. Bot **won't** add channel, that doesn't have enough space in the description to create WebRing.</br>
@@ -23,7 +23,9 @@ Due to Telegram restrictions, description of the channel can be up to 256 charac
 First of all, this project written on Python, so you will have to install Python package on your system. You can find packages for different operating systems on Python official page.
 On the next step you will have to download this repository. My recommendation is to use Git, but you can use what ever you want. 
 Command for git:
-```
+```![example.png](example.png)
+![example.png](example.png)
+example_webring
 git clone https://github.com/Antcating/webring_telegram.git
 cd webring_telegram
 python3 main.py
@@ -54,5 +56,9 @@ All of the rows are necessary to make the Ring working.
 - To improve the security of the WebRings, only approved administrators will be able to make changes in the channel list. So, you have to get your (and, if you want, other people) Telegram id's. You can to it, for example, using this [bot](https://t.me/userinfobot). Your id's you paste to the config on the 'ids' row.
 - For the convenience of users, bot has to have the public WebRing list of the channels. So, you have to create a **public** channel and add bot there with permission to send messages. After adding bot to the channel, you will paste the link to the channel in **this format: @channel_name** to the 'link' row of the config.
 - The last one, the 'text' row is used to name your WebRing. Everyone will see it on the begging of Ring widget. Try not to make it to long: up to 30 characters. It is not necessary to change it, if you don't want to.
+
+## Thanks
+- [PyTelegramBotApi](https://github.com/eternnoir/pyTelegramBotAPI)
+- [XXIIVV Github Repo](https://github.com/XXIIVV)
 
 Inspired by: https://xxiivv.com/ 
