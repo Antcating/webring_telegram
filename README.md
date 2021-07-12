@@ -23,9 +23,7 @@ Due to Telegram restrictions, description of the channel can be up to 256 charac
 First of all, this project written on Python, so you will have to install Python package on your system. You can find packages for different operating systems on Python official page.
 On the next step you will have to download this repository. My recommendation is to use Git, but you can use what ever you want. 
 Command for git:
-```![example.png](example.png)
-![example.png](example.png)
-example_webring
+```
 git clone https://github.com/Antcating/webring_telegram.git
 cd webring_telegram
 python3 main.py
