@@ -1,10 +1,12 @@
 # WebRing Telegram
 Telegram based WebRing realisation.
 
+
+
 ---
 
 Telegram WebRing can be used to make possible for Telegram users surf through channels, that are "neighbors": relative theme, same ideology, etc. Whole system works in the descriptions of the channels, so users can anytime find the Webring and go to reading content in the next channel.
-
+![bc3f5eff23b3b596443c0c922b349cf0.png](bc3f5eff23b3b596443c0c922b349cf0.png)
 ## Installation and configuration
 First of all, this project written on Python, so you will have to install Python package on your system. You can find packages for different operating systems on Python official page.
 On the next step you will have to download this repository. My recommendation is to use Git, but you can use what ever you want. 
