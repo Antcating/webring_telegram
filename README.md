@@ -14,7 +14,9 @@ git clone https://github.com/Antcating/webring_telegram.git
 cd webring_telegram
 python3 main.py
 ```
-    After downloading you have to install dependencies:
+
+After downloading you have to install dependencies:
+    
 ```
 pip3 install -r requirements.txt
 ```
