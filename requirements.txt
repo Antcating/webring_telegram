@@ -1,0 +1,2 @@
+pyTelegramBotAPI==3.7.9
+configparser==5.0.2
