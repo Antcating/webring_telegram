@@ -150,6 +150,7 @@ Next: {next_channel}
 Previous: {previous_channel}
 Random: {random_channel}
 List: {list_channels}''')
+        update_ring_list()
     except telebot.apihelper.ApiException as description_change_error:
         if description_change_error.result.status_code == 400:
             return
@@ -167,8 +168,8 @@ def update_ring_list():
     for id_list in range(int(current_list.id) - 3, int(current_list.id)):
         try:
             bot.delete_message(config['ChannelList']['link'], id_list)
-        except telebot.apihelper.ApiTelegramException:
-            pass
+        except telebot.apihelper.ApiTelegramException as update_error:
+            print(update_error)
 
-
+update_ring_list()
 bot.polling(none_stop=True)
