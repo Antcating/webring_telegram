@@ -1,5 +1,7 @@
-# WebRing Telegram
+# Web Ring Telegram
 Telegram based WebRing realisation.
+
+Read on [English](https://github.com/Antcating/webring_telegram/blob/main/README.md) | Читать на [русском](https://github.com/Antcating/webring_telegram/blob/main/README_ru.md)
 
 ---
 
