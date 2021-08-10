@@ -8,11 +8,11 @@ Read on [English](https://github.com/Antcating/webring_telegram/blob/main/README
 Telegram WebRing can be used to make possible for Telegram users surf through channels, that are "neighbors": relative theme, same ideology, etc. Whole system works in the descriptions of the channels, so users can anytime find the Webring and go to reading content in the next channel.
 <p align="left">
     <img src="example.png"> </br>
-    *Web Ring example*
+    Web Ring example
 </p>
 
 ## Usage
-
+**You can use buttons keyboard** or use commands below. 
 - `/admin_help` - to get information, that written here.
 - `/add` - adding channel to list. </br>
 Before adding channel to the list, administrator of the channel has to add bot with permissions to send messages and modify channel info. If bot doesn't has enough permissions - it will return error message in private chat with Ring Master (Web Ring administrator).</br>
@@ -20,6 +20,7 @@ Due to Telegram restrictions, description of the channel can be up to 256 charac
 **IMPORTANT**: Telegram has delay in updating info, so you will have to wait about 1-2 minutes, after changing description, to make a try to add channel.</br>
 - `/remove` - removing channel from the list and deleting bot from channel. </br>
 - `/list` - get list of the channels.
+- `/update` - update config without restarting bot.
 
 ## Installation and configuration
 ### Installation
