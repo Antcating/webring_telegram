@@ -79,7 +79,8 @@ def channel_delete_handler(message):
         channel_list = open('ring_list', 'r').read().splitlines()
     if message.text in channel_list:
         channel_list.remove(message.text)
-        open('ring_list', 'w').writelines(channel_list)
+        ring_add_updated = open('ring_list', 'w')
+        ring_add_updated.write('\n'.join(channel_list))
         bot.leave_chat(message.text.replace('https://t.me/', '@'))
         bot.send_message(message.from_user.id, 'Channel deleted from list')
     else:
