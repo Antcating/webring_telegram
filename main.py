@@ -19,7 +19,7 @@ bot = tb.TeleBot(tb_token)
 def send_welcome(message):
     if str(message.from_user.id) in [admin_id.strip() for admin_id in config['AdminPanel']['ids'].split(',')]:
         bot.send_message(message.from_user.id, """
-Welcome to *Yet Another Telegram Web Ring Bot*!
+Welcome to *Telegram Web Ring Control Bot*!
 Use /admin_help to get information about usage.""", parse_mode='Markdown')
 
 
@@ -88,7 +88,7 @@ def channel_delete_handler(message):
 
 
 @bot.message_handler(commands=['list'])
-def widget_activating(message):
+def list_channels(message):
     if str(message.from_user.id) in [admin_id.strip() for admin_id in config['AdminPanel']['ids'].split(',')]:
         try:
             channel_list = open('ring_list', 'r').read().splitlines()
@@ -97,6 +97,13 @@ def widget_activating(message):
         except FileNotFoundError:
             bot.send_message(message.from_user.id, 'Ring List is empty',
                              disable_web_page_preview=True)
+
+@bot.message_handler(commands=['update'])
+def config_update(message):
+    if str(message.from_user.id) in [admin_id.strip() for admin_id in config['AdminPanel']['ids'].split(',')]:
+        update_config()
+        bot.send_message(message.from_user.id, 'Config updated')
+
 
 
 def channel_checking_system(message):
@@ -138,15 +145,15 @@ def description_changer(message):
     else:
         channel_link = '@' + message.chat.username
     channel_description = bot.get_chat(channel_link).description
-    if config['WebRing']['text'] in channel_description:
-        description = channel_description.split(config['WebRing']['text'])[0].strip()
+    if '‘' in channel_description:
+        description = channel_description.split('‘')[0].strip()
     else:
         description = channel_description
 
-    next_channel, previous_channel, random_channel, list_channels = web_ring_gen(message, channel_link)
+    next_channel, previous_channel, random_channel, list_channels = web_ring_gen(message, channel_link, config)
     try:
-        bot.set_chat_description(channel_link, description + '\n' + config['WebRing']['text'] +
-f'''
+        bot.set_chat_description(channel_link, description + '\n‘' + config['WebRing']['text'] +
+                                 f'''
 Next: {next_channel}
 Previous: {previous_channel}
 Random: {random_channel}
@@ -160,17 +167,23 @@ List: {list_channels}''')
 
 
 def update_ring_list():
-    channel_list = open('ring_list', 'r').read().splitlines()
-    current_list = bot.send_message(config['ChannelList']['link'],
+    try:
+        channel_list = open('ring_list', 'r').read().splitlines()
+    except FileNotFoundError:
+        channel_list = []
+        open('ring_list', 'w')
+    if channel_list:
+        current_list = bot.send_message(config['ChannelList']['link'],
                                     '\n'.join(channel_list),
                                     disable_notification=True,
                                     disable_web_page_preview=True,
                                     )
-    for id_list in range(int(current_list.id) - 3, int(current_list.id)):
-        try:
-            bot.delete_message(config['ChannelList']['link'], id_list)
-        except telebot.apihelper.ApiTelegramException as update_error:
-            print(update_error)
+        for id_list in range(int(current_list.id) - 3, int(current_list.id)):
+            try:
+                bot.delete_message(config['ChannelList']['link'], id_list)
+            except telebot.apihelper.ApiTelegramException as update_error:
+                print(update_error)
+
 
 update_ring_list()
 bot.polling(none_stop=True)

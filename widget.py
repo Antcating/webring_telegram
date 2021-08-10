@@ -1,7 +1,7 @@
 import telebot, random
 
 
-def web_ring_gen(message, channel_link):
+def web_ring_gen(message, channel_link, config):
     try:
         channel_list = open('ring_list', 'r').read().splitlines()
     except FileNotFoundError:
@@ -23,7 +23,7 @@ def web_ring_gen(message, channel_link):
             next_channel = channel_list[current_channel_pos + 1].replace('https://t.me/', '@')
             previous_channel = channel_list[current_channel_pos - 1].replace('https://t.me/', '@')
         random_channel = channel_list[random.randint(0, len(channel_list) - 1)].replace('https://t.me/', '@')
-        list_channels = '@teleg_web_ring_list'
+        list_channels = config['ChannelList']['link']
         return next_channel, previous_channel, random_channel, list_channels
     except ValueError:
         print(channel_link, 'not in list')
